@@ -4,6 +4,8 @@ This repository contains a safety example that shows the usage of the [Arm Funct
 
 The traffic light example is configured for the [Infineon KIT_T2G-B-H_LITE](https://www.keil.arm.com/boards/infineon-kit-t2g-b-h-lite-v1-34ab4d8/features/) development board and uses the [MDK-Middleware](https://www.keil.arm.com/packs/mdk-middleware-keil/overview/) for network communication.
 
+The example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
+
 ## Directory Structure
 
 Directory                                 | Content

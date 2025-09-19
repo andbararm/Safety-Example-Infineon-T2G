@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=d:\\Repositories\\GitHub\\Arm-Examples\\Safety-Examples-Infineon-T2G\\KIT_T2G-B-H_LITE\\TrafficLight\\CM0p_Boot\\out\\Boot\\CYT4BF8CDS\\Debug"
+    ]
+}

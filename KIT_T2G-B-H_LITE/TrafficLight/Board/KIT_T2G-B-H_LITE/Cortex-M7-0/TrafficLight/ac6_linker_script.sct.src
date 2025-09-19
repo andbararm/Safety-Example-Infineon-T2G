@@ -1,0 +1,82 @@
+/*
+ * Copyright (c) 2025 Arm Limited. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the License); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+; Vendor:    Infineon
+; Device:    CYT4BF8CDS
+; Processor: Cortex-M7
+; Project:   TrafficLight
+
+/*----------------------------------------------------------------------------
+  Scatter File Definitions
+ *----------------------------------------------------------------------------*/
+
+LR_FLASH REGION_FLASH_START REGION_FLASH_SIZE {
+  ER_FLASH REGION_FLASH_START REGION_FLASH_SIZE {
+    *.o (RESET, +First)
+    * (InRoot$$Sections)
+    .ANY (+RO, +XO)
+  }
+  RAM_VECTORS REGION_RAM_NO_INIT_VECTORS_START UNINIT REGION_RAM_NO_INIT_VECTORS_SIZE {
+    * (.bss.noinit.RESET_RAM, +FIRST)
+  }
+  RAM_SYSTEM REGION_RAM_NO_INIT_SYSTEM_START UNINIT REGION_RAM_NO_INIT_SYSTEM_SIZE {
+    cy_syslib.o (.bss.noinit)
+    system_cm7.o (.bss.noinit)
+  }
+  RAM_PRIVILEGED REGION_RAM_PRIVILEGED_START REGION_RAM_PRIVILEGED_SIZE {
+    Net_Config.o (.bss.os.*.cb)
+    * (.data.os*)
+    * (.bss.os*)
+  }
+  RAM_COM REGION_RAM_COM_START REGION_RAM_COM_SIZE {
+    Communication.o (+RW +ZI)
+    net_*.o (+RW +ZI)
+    emac_t2g.o (+RW +ZI)
+    phy_dp83825i.o (+RW +ZI)
+    * (.data.EmacDrv)
+  }
+  RAM_SHARED REGION_RAM_SHARED_START REGION_RAM_SHARED_SIZE {
+    * (ram_shared)
+    system_cm7.o (+RW +ZI)
+    cy_*.o (+RW +ZI)
+    libspace.o (+RW +ZI)
+    vio_KIT_T2G-B-H_LITE.o (+RW +ZI)
+  }
+  RAM_EVR REGION_RAM_NO_INIT_EVR_START UNINIT REGION_RAM_NO_INIT_EVR_SIZE {
+    EventRecorder.o (+ZI)
+  }
+  RAM_NORMAL_OP REGION_RAM_NORMAL_OP_START REGION_RAM_NORMAL_OP_SIZE {
+    NormalOperation.o (+RW +ZI)
+  }
+  RAM_VERIFY_OP REGION_RAM_VERIFY_OP_START REGION_RAM_VERIFY_OP_SIZE {
+    OperationVerification.o (+RW +ZI)
+  }
+  RAM_SAFE_OP REGION_RAM_SAFE_OP_START REGION_RAM_SAFE_OP_SIZE {
+    SafeModeOperation.o (+RW +ZI)
+    hw_watchdog.o (+RW +ZI)
+  }
+  RAM_TIMER REGION_RAM_TIMER_START REGION_RAM_TIMER_SIZE {
+    rtx_lib.o (.bss.os.thread.timer.stack)
+  }
+  RAM_IDLE REGION_RAM_IDLE_START REGION_RAM_IDLE_SIZE {
+    * (ram_idle)
+    rtx_lib.o (.bss.os.thread.idle.stack)
+  }
+  ARM_LIB_STACK REGION_ARM_LIB_STACK_START EMPTY REGION_ARM_LIB_STACK_SIZE {
+  }
+}

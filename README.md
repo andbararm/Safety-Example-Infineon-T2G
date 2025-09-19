@@ -17,6 +17,12 @@ Directory                                 | Content
 
 The examples are configured for [Keil Studio for VS Code](https://www.keil.arm.com/). Install [Keil Studio for VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack) from the VS Code marketplace and run a blinky example for the related board first to verify tool installation.
 
+## Webinar
+
+This example was explained in the following webinar:
+
+*TODO*: Add link to webinar.
+
 ## Issues or Questions
 
 Use the **Issues** tab to raise questions or issues.

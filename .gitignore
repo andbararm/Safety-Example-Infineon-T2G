@@ -80,3 +80,6 @@ uv2csolution.log
 
 # legacy intermediate project file
 *.cprj
+
+# Infineon Device_Configurator related files
+debug.log

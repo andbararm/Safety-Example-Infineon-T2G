@@ -43,9 +43,9 @@ The concepts apply to **any Cortex-M device with an MPU**.
 ## CMSIS Solution Setup
 
 The `T2G.csolution.yml` file contains the following projects:
-
     - `CM0p_Boot/Boot.cproject.yml`: containing the bootloader code that starts the the Cortex-M7 cores.
-    - `CM7_0_TrafficLight/TrafficLight.cproject.yml`: containing the traffic light example project.
+    - `CM7_0_TrafficLight/TrafficLight.cproject.yml`: containing the traffic light example project. Refer to the
+      application's [README](./CM7_0_TrafficLight/README.md) for more information.
     - `CM7_1_Blinky/Blinky.cproject.yml`: containing a simple example that blinks the third LED on the board.
 
 ---

@@ -1,8 +1,6 @@
 # Safety Example for Infineon TRAVEO T2G Series
 
-This repository contains examples for the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
-
-The examples are configured for [Keil Studio for VS Code](https://www.keil.arm.com/).
+This repository contains examples for [Keil Studio for VS Code](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
 
 ## Quick Start
 
@@ -14,6 +12,8 @@ The examples are configured for [Keil Studio for VS Code](https://www.keil.arm.c
 
 ## Examples
 
+The examples can be explored using the [Keil MDK Community edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions) that is free to use for training and evaluation. Instead of the commercial [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System) with is part of the [Keil MDK Professional edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions) the open-source variant [Keil RTX](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/RTX5%20RTOS) is used for evaluation purposes.
+
 ### App/T2G
 
 The structure of the [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example is shown below. It contains:
@@ -24,7 +24,7 @@ The structure of the [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety exa
 
 ![App_T2G Safety Example](./Doc/App_T2G.png "App_T2G Safety Example")
 
-- The [CM7_0_TrafficLight](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) uses safety classes to project the critical safe-mode operation. It provides a web server that interacts with the user and allows to inject faults for testing the system recovery features. This part of the example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
+The safety-critical application part [CM7_0_TrafficLight](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) uses safety classes to protect safe-mode operation. A web server that interacts with the user allows you to inject faults for testing the system recovery features. This part of the example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
 
 ### Test/Ethernet/DriverTest
 
@@ -32,7 +32,7 @@ The Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](htt
 
 The [Test/Ethernet/DriverTest.csolution.yml](./Test/Ethernet/DriverTest.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
 
-## File and Directory Structure
+## Files and Directories
 
 This is a list of the relevant files and directories.
 
@@ -45,9 +45,7 @@ File/Directory                            | Content
 
 ## Webinar
 
-This example was explained in the following webinar:
-
-*TODO*: Add link to webinar.
+This example will be explained in the [Keil Studio Webinar #5: Multicore and FuSa Development with TRAVEO™ T2G](https://www.arm.com/resources/webinar/keil-studio-session-5) with live Q&A on Tuesday, September 30, 2025.
 
 ## Issues or Questions
 

@@ -21,7 +21,7 @@ The example demonstrates how FuSa RTS enforces **freedom from interference** bet
 - **Normal Operation (Class 0):** Controls light cycles and traffic data acquisition.  
 - **Operation Verification (Class 0):** Validates sensor plausibility.  
 - **Communication (Class 1):** Web access, monitoring, and fault injection.  
-- **Safe-Mode Operation (Class 3):** Blinking yellow fallback when errors occur.
+- **Safe-Mode Operation (Class 2):** Blinking yellow fallback when errors occur.
 
 ## Fault Injection and Debugging
 

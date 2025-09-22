@@ -63,7 +63,11 @@ The `T2G.csolution.yml` file contains the following projects:
 ### Using the Example
 
 - **LEDs** on the KIT_T2G-B-H_LITE board emulate the traffic light:
-    - Green = LED1, Green = LED3, Green = 1 Hz Blinky.  
+    - User LED 1: red
+    - User LED 2: yellow
+    - User LED 3: blinking with 1 Hz (controlled by Cortex-M7 core 1)
+
+> Note: the green LED has been omitted as the board does not provide enough LEDs.
 
 - **Web Interface**:  
     - Connect the board to your LAN.  

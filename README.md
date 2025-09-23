@@ -44,20 +44,20 @@ File/Directory                            | Content
 [Test/Ethernet](./Test/Ethernet)          | [Test/Ethernet/DriverTest](#testethernetdrivertest) contains the validation for the CMSIS-Driver Ethernet.
 [.ci](./.ci)                              | Contains setup for the CI test workflows.
 
-## [Continuous Integration (CI) Tests](https://en.wikipedia.org/wiki/Continuous_integration)
+## Git Workflow
 
-The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the CMSIS-Toolbox and CMake. CI is effectively supported with:
+This repository contains multiple *csolution projects* and is configured as a single Git workspace for VS Code. It can be therefore effectively used with the [VS Code Git integration](https://code.visualstudio.com/docs/sourcecontrol/overview). The following files achieve this:
+
+- [vcpkg-configuration.json](./vcpkg-configuration.json) is in the workspace root directory and installs the tools for all *csolution projects*.
+- [.gitignore](./.gitignore) excludes files that contain user specific setup, for example `.vscode` and `*.cbuild*.yml`.
+
+## Continuous Integration (CI) Tests
+
+The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the CMSIS-Toolbox and CMake. [CI](https://en.wikipedia.org/wiki/Continuous_integration) is effectively supported with:
 
 - Tool installation based on a single [vcpkg-configuration.json](./vcpkg-configuration.json) file for desktop and CI environments.
 - Project files (`*.csolution.yml`) that integrate in IDE and CI environments. Projects build seamless in CI, for example using GitHub actions.
 - [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. Using self-hosted GitHub runners, projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
-
-## Git Workflow
-
-This repository contains multiple *csolution projects* and is configured as a single Git workspace for VS Code. It can be therefore effectively used with the VS Code Git integration. The following files achieve this:
-
-- [vcpkg-configuration.json](./vcpkg-configuration.json) is in the workspace root directory and installs the tools for all *csolution projects*.
-- [.gitignore](./.gitignore) excludes files that contain user specific setup, for example `.vscode` and `*.cbuild*.yml`.
 
 ## Webinar
 

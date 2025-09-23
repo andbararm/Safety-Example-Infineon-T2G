@@ -36,7 +36,8 @@ jobs:
           ]
       fail-fast: false
 
-    runs-on: self-hosted
+    # runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
 

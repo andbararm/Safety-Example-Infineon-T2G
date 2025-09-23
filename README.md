@@ -16,7 +16,7 @@ The examples can be explored using the [Keil MDK Community edition](https://www.
 
 ### App/T2G
 
-The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example contains:
+The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example uses three processor cores and contains:
 
 - [App/CM0p_Boot/Boot.cproject.yml](./App/CM0p_Boot/Boot.cproject.yml) implements a simple setup for the various processors and runs on the Cortex-M0+ processor of the device.
 - [App/CM7_0_TrafficLight/TrafficLight.cproject.yml](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) implements the safety-critical application part using [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System) and runs on the Cortex-M7 processor #0.
@@ -38,10 +38,26 @@ This is a list of the relevant files and directories.
 
 File/Directory                            | Content
 :-----------------------------------------|:---------------------------------------------------------
-[vcpkg-configuration.json](./vcpkg-configuration.json) | Defines the tools that [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) installs in VS Code.
+[vcpkg-configuration.json](./vcpkg-configuration.json) | Defines the tools that the [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) installs in VS Code.
 [App](./App)                              | [App/T2G](#appt2g) contains the safety example.
 [Doc](./Doc)                              | Documentation files.
 [Test/Ethernet](./Test/Ethernet)          | [Test/Ethernet/DriverTest](#testethernetdrivertest) contains the validation for the CMSIS-Driver Ethernet.
+[.ci](./.ci)                              | Contains setup for the CI test workflows.
+
+## [Continuous Integration (CI) Tests](https://en.wikipedia.org/wiki/Continuous_integration)
+
+The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the CMSIS-Toolbox and CMake. CI is effectively supported with:
+
+- Tool installation based on a single [vcpkg-configuration.json](./vcpkg-configuration.json) file for desktop and CI environments.
+- Project files (`*.csolution.yml`) that integrate in IDE and CI environments. Projects build seamless in CI, for example using GitHub actions.
+- [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. Using self-hosted GitHub runners, projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
+
+## Git Workflow
+
+This repository contains multiple *csolution projects* and is configured as a single Git workspace for VS Code. It can be therefore effectively used with the VS Code Git integration. The following files achieve this:
+
+- [vcpkg-configuration.json](./vcpkg-configuration.json) is in the workspace root directory and installs the tools for all *csolution projects*.
+- [.gitignore](./.gitignore) excludes files that contain user specific setup, for example `.vscode` and `*.cbuild*.yml`.
 
 ## Webinar
 

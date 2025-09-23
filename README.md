@@ -1,13 +1,13 @@
 # Safety Example for Infineon TRAVEO T2G Series
 
-This repository contains examples for [Keil Studio for VS Code](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
+This repository contains examples for [Keil Studio](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
 
 ## Quick Start
 
 1. Install [Keil Studio for VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack) from the VS Code marketplace.
 2. Clone this Git repository into a VS Code workspace.
 3. Open the CMSIS View in VS Code and use the ... menu *Select Active Solution from workspace* to choose a example.
-4. The related tools and software packs are downloaded and installed. *View - Output - CMSIS Solution* shows the progress.
+4. The related tools and software packs are downloaded and installed. Review progress with *View - Output - CMSIS Solution*.
 5. Using the [Action buttons in the CMSIS View](https://github.com/ARM-software/vscode-cmsis-csolution?tab=readme-ov-file#action-buttons) allows you to build, load and debug the example on the Infineon Kit.
 
 ## Examples
@@ -16,7 +16,7 @@ The examples can be explored using the [Keil MDK Community edition](https://www.
 
 ### App/T2G
 
-The structure of the [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example is shown below. It contains:
+The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example contains:
 
 - [App/CM0p_Boot/Boot.cproject.yml](./App/CM0p_Boot/Boot.cproject.yml) implements a simple setup for the various processors and runs on the Cortex-M0+ processor of the device.
 - [App/CM7_0_TrafficLight/TrafficLight.cproject.yml](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) implements the safety-critical application part using [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System) and runs on the Cortex-M7 processor #0.
@@ -49,4 +49,4 @@ This example will be explained in the [Keil Studio Webinar #5: Multicore and FuS
 
 ## Issues or Questions
 
-Use the **Issues** tab to raise questions or issues.
+Use the [**Issues**](./issues) tab to raise questions or issues.

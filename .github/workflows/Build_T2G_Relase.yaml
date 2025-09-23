@@ -29,7 +29,9 @@ on:
 jobs:
   CI:
     strategy:
-     runs-on: ubuntu-latest
+      fail-fast: false
+
+    runs-on: ubuntu-latest
 
     steps:
 

@@ -41,7 +41,7 @@ solution:
             - project-context: TrafficLight.Release
             - project-context: Blinky.Release
           debugger:
-            name: CMSIS-DAP@pyOCD
+            name: KitProg3@pyOCD
             port: 3333
             protocol: swd
             clock: 10000000

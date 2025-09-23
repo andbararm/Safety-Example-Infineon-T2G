@@ -51,7 +51,6 @@ layer:
 
   define:
     - CORE_NAME_CM7_1
-    - BASE_SRAM_NON_CACHE: BASE_SRAM_CM7_1
 
   linker:
     - script: RTE/Device/CYT4BF8CDS_Cortex-M7-1/xmc7200d_x8384_cm7_1.sct

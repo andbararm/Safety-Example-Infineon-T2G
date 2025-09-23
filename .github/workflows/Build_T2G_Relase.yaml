@@ -32,7 +32,7 @@ jobs:
       max-parallel: 1
       matrix:
         context: [
-          { tool: AC6,  dir: ./App,  proj: TG2,  target_type: T2G-Kit,  build_type: Release,  cbld_set: Release}
+          { tool: AC6,  dir: ./App,  proj: T2G,  target_type: T2G-Kit,  build_type: Release,  cbld_set: Release}
           ]
       fail-fast: false
 

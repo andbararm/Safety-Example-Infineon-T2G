@@ -30,11 +30,11 @@ The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example uses three p
 
 The safety-critical application part [CM7_0_TrafficLight](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) uses safety classes to protect safe-mode operation. A web interface allows you to inject faults for testing the system recovery features. This part of the example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
 
-### Test/CM7_0_DV_ETH
+### Test/DriverValidation
 
 The Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) or [board software layers](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/#board-layer). These components are therefore developed separately and provided in this repository.
 
-The [Test/CM7_0_DV_ETH/DV_ETH.cproject.yml](./Test/CM7_0_DV_ETH/DV_ETH.cproject.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
+The [Test/DriverValidation.csolution.yml](./Test/DriverValidation.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
 
 ## Git Workflow
 
@@ -43,13 +43,21 @@ This repository contains multiple *csolution projects* and is configured as a si
 - [vcpkg-configuration.json](./vcpkg-configuration.json) is in the workspace root directory and installs the tools for all *csolution projects*.
 - [.gitignore](./.gitignore) excludes files that contain user specific setup, for example `.vscode` and `*.cbuild*.yml`.
 
-## Continuous Integration (CI) Tests
+## Continuous Integration (CI) and Hardware-in-the Loop Test
 
 The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/) and CMake. [CI](https://en.wikipedia.org/wiki/Continuous_integration) is effectively supported with:
 
 - Tool installation based on a single [`vcpkg-configuration.json`](./vcpkg-configuration.json) file for desktop and CI environments.
 - CMSIS solution files (`*.csolution.yml`) that enable seamless builds in CI, for example using GitHub actions.
 - [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. Using self-hosted GitHub runners, projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
+
+![CI and HiL Test](./Doc/CI_HIL.png "CI and HiL Test")
+
+CI Workflow                              | Description
+:----------------------------------------|:----------------------------------------------------------
+[Build_T2G_Release.yaml](/.github/workflows/Build_T2G_Release.yaml) | Compile application using a GitHub action and save build output (artifacts).
+[Run_T2G_Release.yaml](/.github/workflows/Run_T2G_Release.yaml)     | Download to a Linux box and execute the application on [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
+
 
 ## Files and Directories
 
@@ -60,8 +68,8 @@ File/Directory                            | Content
 [vcpkg-configuration.json](./vcpkg-configuration.json) | Defines the tools that the [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) installs in VS Code.
 [App](./App)                              | [App/T2G](#appt2g) contains the safety example.
 [Doc](./Doc)                              | Documentation files.
-[Test/CM7_0_DV_ETH](./Test/CM7_0_DV_ETH)  | [Test/CM7_0_DV_ETH](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
-[.ci](./.ci)                              | Contains setup for the CI test workflows.
+[Test/DriverValidation](./Test/DriverValidation)  | [Test/DriverValidation](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
+[.github/workflows](./.github/workflows)  | Contains setup for the CI Build and HiL test workflows.
 
 ## Webinar
 

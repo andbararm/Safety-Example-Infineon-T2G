@@ -1,3 +1,5 @@
+[![Build T2G Release](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_T2G_Release.yaml?logo=arm&logoColor=0091bd&label=Build%20T2G%20Release)](./.github/workflows/Build_T2G_Release.yaml)
+
 # Safety Example for Infineon TRAVEO T2G Series
 
 This repository contains examples for [Keil Studio](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).

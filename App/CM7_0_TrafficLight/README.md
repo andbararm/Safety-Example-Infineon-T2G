@@ -72,7 +72,7 @@ The application is organized into safety classes and zones:
 - `refresh.cgx` : Dynamic Web page system status updates
 - *Other files* : Other Web page source files
 
-### Safety Class 3 (Safety)
+### Safety Class 2 (Safety)
 
 - `SafeModeOperation.c` : Implements Safe-Mode (yellow light blinking)
 

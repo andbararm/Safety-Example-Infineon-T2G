@@ -14,7 +14,7 @@ This repository contains examples for [Keil Studio](https://www.keil.arm.com/) t
 
 ## Examples
 
-The examples can be explored using the [Keil MDK Community edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions) that is free-to-use for training and evaluation. For evaluation purposes, the examples use the open-source variant of [Keil RTX](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/RTX5%20RTOS) which offers the same features as the commercial, safety-certified [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System). FuSa RTS is part of the [Keil MDK Professional edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions).
+The examples can be explored using the [Keil MDK Community edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions) that is free-to-use for training and evaluation. For evaluation purposes, the open-source variant of [Keil RTX](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/RTX5%20RTOS) is used which offers the similar features as the commercial, safety-certified [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System). FuSa RTS is part of the [Keil MDK Professional edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions).
 
 ### App/T2G
 
@@ -28,7 +28,15 @@ The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example uses three p
 
 ![App_T2G Safety Example](./Doc/App_T2G.png "App_T2G Safety Example")
 
-The safety-critical application part [CM7_0_TrafficLight](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) uses safety classes to protect safe-mode operation. A web interface allows you to inject faults for testing the system recovery features. This part of the example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
+The safety-critical application part [CM7_0_TrafficLight](./App/CM7_0_TrafficLight/TrafficLight.cproject.yml) uses [safety classes](https://arm-software.github.io/CMSIS_6/main/RTOS2/rtos_process_isolation_safety_class.html) to protect safe-mode operation. A web interface allows you to inject faults for testing the system recovery features. This part of the example is based on the application note [KAN336 - TrafficLight: Arm FuSa RTS process isolation example](https://developer.arm.com/documentation/kan336/latest).
+
+This example application uses the [Memory Protection Unit (MPU)](https://arm-software.github.io/CMSIS_6/main/RTOS2/rtos_process_isolation_mpu.html) and the  [Thread Watchdog](https://arm-software.github.io/CMSIS_6/main/RTOS2/rtos_process_isolation_thread_wdt.html) available with FuSa RTS.
+It does not use:
+
+- The [Shared Memory Protection Unit (SMPU)](https://community.infineon.com/t5/Blogs/Understanding-Shared-Memory-Protection-Units/ba-p/713327) which restricts the access to memory made by each bus-master in the MCU. 
+- The [Peripheral Protection Unit (PPU)](https://community.infineon.com/t5/Blogs/Understanding-Peripheral-Protection-Units/ba-p/822859) which protects peripherals with access permissions.
+
+The usage of SMPU and PPU is explained in the application note from [Infineon AN219843 - Protection Configuration in TRAVEO T2G](https://www.infineon.com/gated/infineon-an219843---protection-configuration-in-traveo-tm-t2g-applicationnotes-en_32a66c38-76fc-478e-ba27-0fccba2b2976).
 
 ### Test/DriverValidation
 
@@ -49,7 +57,7 @@ The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the
 
 - Tool installation based on a single [`vcpkg-configuration.json`](./vcpkg-configuration.json) file for desktop and CI environments.
 - CMSIS solution files (`*.csolution.yml`) that enable seamless builds in CI, for example using GitHub actions.
-- [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. Using self-hosted GitHub runners, projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
+- [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. [Using self-hosted GitHub runners](./Doc/SelfHosted-Runner.md), projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
 
 ![CI and HiL Test](./Doc/CI_HIL.png "CI and HiL Test")
 

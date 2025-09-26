@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/"
+                "cwd": "${workspaceFolder}/App"
             },
             "windows": {
                 "options": {
@@ -54,7 +54,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/"
+                "cwd": "${workspaceFolder}/App"
             },
             "windows": {
                 "options": {
@@ -101,7 +101,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/"
+                "cwd": "${workspaceFolder}/App"
             },
             "windows": {
                 "options": {
@@ -164,7 +164,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/"
+                "cwd": "${workspaceFolder}/App"
             },
             "windows": {
                 "options": {

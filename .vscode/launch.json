@@ -2,10 +2,33 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Cortex-M7-0 CMSIS_DAP@pyOCD (attach)",
+            "type": "gdbtarget",
+            "request": "attach",
+            "cwd": "${workspaceFolder}/App",
+            "program": "out\\TrafficLight\\T2G-Kit\\Debug\\TrafficLight.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "initCommands": [
+                "monitor reset halt"
+            ],
+            "customResetCommands": [
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
+            ],
+            "target": {
+                "port": "3334"
+            },
+            "cmsis": {
+                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
+                "updateConfiguration": "manual"
+            }
+        },
+        {
             "name": "Cortex-M0p CMSIS_DAP@pyOCD (launch)",
             "type": "gdbtarget",
             "request": "launch",
-            "cwd": "${workspaceFolder}/",
+            "cwd": "${workspaceFolder}/App",
             "program": "out\\Boot\\T2G-Kit\\Debug\\Boot.axf",
             "gdb": "arm-none-eabi-gdb",
             "preLaunchTask": "CMSIS Load",
@@ -44,7 +67,7 @@
             "name": "Cortex-M0p CMSIS_DAP@pyOCD (attach)",
             "type": "gdbtarget",
             "request": "attach",
-            "cwd": "${workspaceFolder}/",
+            "cwd": "${workspaceFolder}/App",
             "program": "out\\Boot\\T2G-Kit\\Debug\\Boot.axf",
             "gdb": "arm-none-eabi-gdb",
             "initCommands": [
@@ -64,34 +87,11 @@
             }
         },
         {
-            "name": "Cortex-M7-0 CMSIS_DAP@pyOCD (attach)",
-            "type": "gdbtarget",
-            "request": "attach",
-            "cwd": "${workspaceFolder}/",
-            "program": "out\\DV_ETH\\T2G-Kit\\Debug\\DV_ETH.axf",
-            "gdb": "arm-none-eabi-gdb",
-            "initCommands": [
-                ""
-            ],
-            "customResetCommands": [
-                "monitor reset halt",
-                "tbreak main",
-                "continue"
-            ],
-            "target": {
-                "port": "3334"
-            },
-            "cmsis": {
-                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
-                "updateConfiguration": "auto"
-            }
-        },
-        {
             "name": "Cortex-M7-1 CMSIS_DAP@pyOCD (attach)",
             "type": "gdbtarget",
             "request": "attach",
-            "cwd": "${workspaceFolder}/",
-            "program": "",
+            "cwd": "${workspaceFolder}/App",
+            "program": "out\\Blinky\\T2G-Kit\\Debug\\Blinky.axf",
             "gdb": "arm-none-eabi-gdb",
             "initCommands": [
                 ""

@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: Copyright 2022-2025 Arm Limited and/or its
+# affiliates <open-source-office@arm.com>
+# SPDX-License-Identifier: Apache-2.0
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+name: Run T2G Release
+on:
+
+  workflow_dispatch:
+  
+jobs:
+  CI:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install vcpkg
+      uses: ARM-software/cmsis-actions/setup-vcpkg@v1  
+
+    - name: Activate vcpkg
+      uses: ARM-software/cmsis-actions/vcpkg@v1
+      with:
+        config: "./vcpkg-run-configuration.json"
+        cache: ""
+
+    - name: Add the Infineon.T2G-B-H_DFP
+      run: |
+        cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
+
+    - name: Download Build Artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        workflow: Build_T2G_Release.yaml
+        name: T2G-Kit@Release
+        path: ./artifact
+
+    - name: Flash-Download-Test for T2G-Kit@Release
+      working-directory: ./artifact/out
+      run: | 
+         python3 -m pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml

@@ -77,6 +77,7 @@ File/Directory                            | Content
 [vcpkg-configuration.json](./vcpkg-configuration.json) | Defines the tools that the [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) installs in VS Code.
 [App](./App)                              | [App/T2G](#appt2g) contains the safety example.
 [Doc](./Doc)                              | Documentation files.
+[Patch](./Patch)                          | Patch for the T2G-B-H_DFP pack.
 [Test/DriverValidation](./Test/DriverValidation)  | [Test/DriverValidation](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
 [.github/workflows](./.github/workflows)  | Contains setup for the CI Build and HiL test workflows.
 

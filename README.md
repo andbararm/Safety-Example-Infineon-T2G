@@ -10,7 +10,8 @@ This repository contains examples for [Keil Studio](https://www.keil.arm.com/) t
 2. Clone this Git repository into a VS Code workspace.
 3. Open the [CMSIS View](https://mdk-packs.github.io/vscode-cmsis-solution-docs/userinterface.html#2-main-area-of-the-cmsis-view) in VS Code and use the ... menu to choose an example via *Select Active Solution from workspace*.
 4. The related tools and software packs are downloaded and installed. Review progress with *View - Output - CMSIS Solution*.
-5. In the CMSIS view, use the [Action buttons](https://github.com/ARM-software/vscode-cmsis-csolution?tab=readme-ov-file#action-buttons) to build, load and debug the example on the hardware.
+5. **Patch T2G-B-H_DFP** as explained in the [README.md](./Patch/README.md)
+6. In the CMSIS view, use the [Action buttons](https://github.com/ARM-software/vscode-cmsis-csolution?tab=readme-ov-file#action-buttons) to build, load and debug the example on the hardware.
 
 ## Examples
 

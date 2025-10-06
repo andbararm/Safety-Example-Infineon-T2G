@@ -67,7 +67,6 @@ CI Workflow                              | Description
 [Build_T2G_Release.yaml](/.github/workflows/Build_T2G_Release.yaml) | Compile application using a GitHub action and save build output (artifacts).
 [Run_T2G_Release.yaml](/.github/workflows/Run_T2G_Release.yaml)     | Download to a Linux box and execute the application on [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
 
-
 ## Files and Directories
 
 This is a list of the relevant files and directories.
@@ -83,7 +82,9 @@ File/Directory                            | Content
 
 ## Webinar
 
-This example will be explained in the [Keil Studio Webinar #5: Multicore and FuSa Development with TRAVEO™ T2G](https://www.arm.com/resources/webinar/keil-studio-session-5) with live Q&A on Tuesday, September 30, 2025.
+This example was explained in the [Multicore and FuSa Development with TRAVEO™ T2G](https://www.arm.com/resources/webinar/keil-studio-session-5):
+
+[![Multicore webinar preview](./Doc/video_preview.png)](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/20250930_FuSa_TRAVEO.mp4)
 
 ## Issues or Questions
 

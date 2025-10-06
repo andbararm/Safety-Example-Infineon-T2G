@@ -27,6 +27,7 @@
 #define EMAC_T2G_H__
 
 #include "Driver_ETH_MAC.h"
+#include "cy_device.h"
 #include "cedi.h"
 
 /* EMAC Driver state flags */
@@ -43,7 +44,7 @@ typedef struct {
   uint8_t                   rx_tail;        // Consumer tail index
   uint8_t                   tx_index;       // Transmit buffer index
   uint32_t                  tx_len;         // Length of assembled frame fragments
-  void                     *base;           // EMAC peripheral base address
+  ETH_Type                 *base;           // EMAC peripheral base address
   CEDI_OBJ                 *drv;            // Driver object pointer (CEDI APIs)
   void                     *pd;             // Driver private data info
 } EMAC_CTRL;

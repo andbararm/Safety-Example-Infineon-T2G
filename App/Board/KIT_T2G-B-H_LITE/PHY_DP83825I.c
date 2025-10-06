@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2018 Arm Limited. All rights reserved.
+ * Copyright (c) 2024-2025 Arm Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -22,7 +22,7 @@
  *
  * Driver:       Driver_ETH_PHYn (default: Driver_ETH_PHY0)
  * Project:      Ethernet Physical Layer Transceiver (PHY)
- *               Driver for DP83848C
+ *               Driver for DP83825I
  * -----------------------------------------------------------------------
  * Use the following configuration settings in the middleware component
  * to connect to this driver.
@@ -129,7 +129,7 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
       }
 
       PHY.flags &= ~PHY_POWER;
-      PHY.bmcr   =  0; //BMCR_POWER_DOWN;
+      PHY.bmcr   = BMCR_POWER_DOWN;
 
       return (PHY.reg_wr(ETH_PHY_ADDR, REG_BMCR, PHY.bmcr));
 

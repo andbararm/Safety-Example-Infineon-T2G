@@ -473,6 +473,9 @@ void Reset_Handler(void)
     __iar_dynamic_initialization();
 #endif
 
+    /* enable global interrupt */
+    __enable_irq();
+
     /* c-runtime */
     __PROGRAM_START();
 }

@@ -207,6 +207,9 @@ void SystemInit(void)
     SystemCoreClockUpdate();
 
     SystemIrqInit();
+
+    /* enable global interrupt */
+    __enable_irq();
 }
 
 

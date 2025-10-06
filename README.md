@@ -43,11 +43,11 @@ It does not use:
 
 The usage of SMPU and PPU is explained in the application note from [Infineon AN219843 - Protection Configuration in TRAVEO T2G](https://www.infineon.com/gated/infineon-an219843---protection-configuration-in-traveo-tm-t2g-applicationnotes-en_32a66c38-76fc-478e-ba27-0fccba2b2976).
 
-### Test/DriverValidation
+### Test/CMSIS_DV
 
 The Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) or [board software layers](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/#board-layer). These components are therefore developed separately and provided in this repository.
 
-The [Test/DriverValidation.csolution.yml](./Test/DriverValidation.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
+The [Test/CMSIS_DV.csolution.yml](./Test/CMSIS_DV.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
 
 ## Git Workflow
 
@@ -81,7 +81,7 @@ File/Directory                            | Content
 [App](./App)                              | [App/T2G](#appt2g) contains the safety example.
 [Doc](./Doc)                              | Documentation files.
 [Patch](./Patch)                          | Patch for the T2G-B-H_DFP pack.
-[Test/DriverValidation](./Test/DriverValidation)  | [Test/DriverValidation](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
+[Test](./Test)                            | [Test/CMSIS_DV](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
 [.github/workflows](./.github/workflows)  | Contains setup for the CI Build and HiL test workflows.
 
 ## Webinar

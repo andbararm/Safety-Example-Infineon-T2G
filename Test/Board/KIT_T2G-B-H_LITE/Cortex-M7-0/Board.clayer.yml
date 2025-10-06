@@ -51,6 +51,7 @@ layer:
 
   define:
     - CORE_NAME_CM7_0
+    - CY_DISABLE_XMC7000_DATA_CACHE
 
   linker:
     - script: RTE/Device/CYT4BF8CDS_Cortex-M7-0/xmc7200d_x8384_cm7_0.sct

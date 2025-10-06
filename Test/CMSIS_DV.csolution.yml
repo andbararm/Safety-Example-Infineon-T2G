@@ -1,5 +1,5 @@
 solution:
-  description: Driver Validation
+  description: CMSIS Driver Validation for Ethernet driver running on Cortex-M7 core 0
   created-for: CMSIS-Toolbox@2.11.0
   cdefault:
 
@@ -27,7 +27,7 @@ solution:
         - set:
           images:
             - project-context: Boot.Debug
-            - project-context: DV_ETH.Debug
+            - project-context: CMSIS_DV.Debug
           debugger:
             name: KitProg3@pyOCD
             port: 3333
@@ -37,7 +37,7 @@ solution:
         - set: Release
           images:
             - project-context: Boot.Release
-            - project-context: DV_ETH.Release
+            - project-context: CMSIS_DV.Release
           debugger:
             name: KitProg3@pyOCD
             port: 3333
@@ -57,4 +57,4 @@ solution:
   # List related projects.
   projects:
     - project: CM0p_Boot/Boot.cproject.yml
-    - project: CM7_0_DV_ETH/DV_ETH.cproject.yml
+    - project: CM7_0_CMSIS_DV/CMSIS_DV.cproject.yml

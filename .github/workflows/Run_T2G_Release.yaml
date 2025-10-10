@@ -41,7 +41,7 @@ jobs:
 #        cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
 
     - name: Download Build Artifact
-      uses: dawidd6/action-download-artifact@v2
+      uses: actions/download-artifact@v5
       with:
         workflow: Build_T2G_Release.yaml
         name: T2G-Kit@Release
@@ -50,4 +50,5 @@ jobs:
     - name: Flash-Download-Test for T2G-Kit@Release
       working-directory: ./artifact/out
       run: | 
-         /home/mcutools/.local/bin/pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml
+         . ~/pyocd_venv/bin/activate
+         python3 -m pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml

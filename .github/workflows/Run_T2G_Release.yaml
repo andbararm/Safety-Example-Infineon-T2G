@@ -41,7 +41,7 @@ jobs:
 #        cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
 
     - name: Download Build Artifact
-      uses: dawidd6/action-download-artifact@v10
+      uses: dawidd6/action-download-artifact@v11
       with:
         workflow: Build_T2G_Release.yaml
         name: T2G-Kit@Release

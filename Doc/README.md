@@ -1,7 +1,16 @@
-# Prepare a self-hosted runner
+# Self-Hosted Runner for Execution Test
 
-These installation instructions are written for a Raspberry Pi (mode 3/4/5) running an Arm64 Ubuntu server edition. For
-other Linux OS, please adapt the steps.
+The CMSIS-Toolbox implements and [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for command line usage with pyOCD. pyOCD is a debug connector used in [Keil Studio] that offers also command-line operation for Continuous Integration (CI).
+
+This section explains how to setup a Linux box that runs a GitHub self-hosted runner for programming and execution of an application. The [build workflow](../.github/workflows/Build_T2G_Release.yaml) is executed on a GitHub hosted runner that stores the build output as an artifact.
+
+![CI and HiL Test](CI_HIL.png "CI and HiL Test")
+
+## Prepare a self-hosted runner
+
+These installation instructions are written for a Raspberry Pi (mode 3/4/5) running an Arm64 Ubuntu server edition.
+They have been tested on [Ubuntu Server 24.0.3 LTS](https://ubuntu.com/download/server). For other Linux OS, please
+adapt the steps.
 
 ## Prerequisites
 
@@ -9,34 +18,27 @@ The following commands need to be run to have all the required software installe
 
 ```sh
 # Make sure your system is up-to-date
-sudo apt update
-sudo apt upgrade
+sudo apt update && sudo apt upgrade
 
 # Install required tools
 sudo apt install net-tools zip unzip
 ```
 
-## Install pyOCD
+### Install pyOCD
+
+> [!NOTE]
+> Ubuntu Server 24.0.3 already comes with Python 3.12.x which is used in the following to describe the set up of
+> `pyocd` in a virtual environment. Please make sure to install an appropriate Python version on your system as well.
 
 ```sh
-# Download the latest self-contained binary
-curl -o pyocd-linux-arm64-0.39.0.zip -L https://github.com/pyocd/pyOCD/releases/download/v0.39.0/pyocd-linux-arm64-0.39.0.zip
+# Create a virtual environment
+python -m venv ~/pyocd_venv
 
-# Create a bin-directory in .local (is already in the path)
-mkdir ~/.local/bin
+# Activate the virtual environment
+source ~/pyocd_venv/bin/activate
 
-# Extract pyOCD to that .local/bin directory
-unzip ./pyocd-linux-arm64-0.39.0.zip ~/.local/bin
-
-# Download udev rules for CMSIS-DAP adapters
-curl -o 50-cmsis-dap.rules -L https://raw.githubusercontent.com/pyocd/pyOCD/refs/heads/main/udev/50-cmsis-dap.rules
-
-# Copy udev rules to correct location
-sudo cp *.rules /etc/udev/rules.d
-
-# Force the udev system to reload
-sudo udevadm control --reload
-sudo udevadm trigger
+# Install pyocd
+pip3 install pyocd
 ```
 
 ## Install the self-hosted runner

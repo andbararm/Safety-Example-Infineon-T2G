@@ -62,7 +62,7 @@ The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the
 
 - Tool installation based on a single [`vcpkg-configuration.json`](./vcpkg-configuration.json) file for desktop and CI environments.
 - CMSIS solution files (`*.csolution.yml`) that enable seamless builds in CI, for example using GitHub actions.
-- [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. [Using self-hosted GitHub runners](./Doc/SelfHosted-Runner.md), projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
+- [Run and Debug Configuration](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#run-and-debug-configuration) for pyOCD that uses a single configuration file `*.cbuild-run.yml`. [Using self-hosted GitHub runners](./Doc/README.md), projects can be tested with [HIL systems](https://en.wikipedia.org/wiki/Hardware-in-the-loop_simulation).
 
 ![CI and HiL Test](./Doc/CI_HIL.png "CI and HiL Test")
 

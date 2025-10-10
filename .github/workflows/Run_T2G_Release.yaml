@@ -50,4 +50,4 @@ jobs:
     - name: Flash-Download-Test for T2G-Kit@Release
       working-directory: ./artifact/out
       run: | 
-         pyocd load --probe cmsisdap: --cbuild-run ./out/T2G+T2G-Kit.cbuild-run.yml
+         /home/mcutools/.local/bin/pyocd load --probe cmsisdap: --cbuild-run ./out/T2G+T2G-Kit.cbuild-run.yml

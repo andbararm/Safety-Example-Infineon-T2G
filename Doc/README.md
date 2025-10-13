@@ -142,6 +142,8 @@ sudo ./bin/installdependencies.sh
 
 ### Configure the runner
 
+Use the URL and registration token from the GitHub UI:
+
 ```sh
 ./config.sh \
   --url https://github.com/<OWNER>/<REPO_OR_ORG> \
@@ -151,8 +153,20 @@ sudo ./bin/installdependencies.sh
 
 ### Run persistently
 
+Install a `systemd` service that starts automatically at boot:
+
 ```sh
 sudo ./svc.sh install
+```
+
+Start the service manually:
+
+```sh
 sudo ./svc.sh start
+```
+
+Check the status of the service:
+
+```sh
 sudo ./svc.sh status
 ```

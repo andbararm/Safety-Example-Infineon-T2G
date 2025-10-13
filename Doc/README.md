@@ -24,7 +24,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install net-tools zip unzip
 ```
 
-### Install pyOCD
+## Install pyOCD
 
 > [!NOTE]
 > Ubuntu Server 24.0.3 already comes with Python 3.12.x which is used in the following to describe the set up of
@@ -40,6 +40,86 @@ source ~/pyocd_venv/bin/activate
 # Install pyocd
 pip3 install pyocd
 ```
+
+## vcpkg
+
+vcpkg is a free C/C++ package manager for acquiring and managing libraries and is used in the CMSIS solution workflow
+to download additional tools.
+
+### Installation
+
+Download `vcpkg` from the GitHub repository:
+
+```sh
+wget -qO vcpkg.tar.gz https://github.com/microsoft/vcpkg/archive/master.tar.gz
+```
+
+Create a new directory to store `vcpkg` and extract the tar.gz file to it:
+
+```sh
+sudo mkdir .vcpkg
+sudo tar xf vcpkg.tar.gz --strip-components=1 -C .vcpkg
+```
+
+Run the following command to build vcpkg itself:
+
+```sh
+sudo .vcpkg/bootstrap-vcpkg.sh
+```
+
+> [NOTE!]
+> If `node` is not installed on your machine, it will be downloaded automatically.
+
+Export the path to `vcpkg` to your `$PATH` environment variable:
+
+```sh
+export PATH=/home/user/.vcpkg:$PATH
+```
+
+Now, `vcpkg` can be used. Check `vcpkg` version with command:
+
+```sh
+vcpkg version
+```
+
+The tar.gz file is no longer needed, remove it:
+
+```sh
+rm -rf vcpkg.tar.gz
+```
+
+### Activation
+
+Download the `vcpkg-configuration.json` file that contains the CMSIS-Toolbox:
+
+```sh
+curl -o vcpkg-configuration.json -L https://raw.githubusercontent.com/Arm-Examples/Safety-Example-Infineon-T2G/refs/heads/main/vcpkg-run-configuration.json
+```
+
+Then, update the registry
+
+```sh
+vcpkg x-update-registry --all
+```
+
+Finally, activate vcpkg:
+
+```sh
+vcpkg-shell activate --json=vcpkg-configuration.json
+```
+
+## Install the required CMSIS-Packs
+
+Now, you have access to the CMSIS-Toolbox which also contains the `cpackget` tool which is used to download CMSIS-Packs
+from the web. For this example, we need the device family and board support packs from Infineon.
+
+```sh
+cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
+cpackget add -a -F Infineon::KIT_T2G-B-H_LITE_BSP@1.2.1
+```
+
+> [NOTE!]
+> Run this command again if the pack versions change.
 
 ## Install the self-hosted runner
 

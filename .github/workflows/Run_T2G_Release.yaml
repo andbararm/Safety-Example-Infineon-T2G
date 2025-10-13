@@ -27,20 +27,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install vcpkg
-      uses: ARM-software/cmsis-actions/setup-vcpkg@v1  
-
-    - name: Activate vcpkg
-      uses: ARM-software/cmsis-actions/vcpkg@v1
-      with:
-        config: "./vcpkg-run-configuration.json"
-        cache: ""
-
-    - name: Add the Infineon.T2G-B-H_DFP
-      run: |
-        cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
-        cpackget add -a -F Infineon::KIT_T2G-B-H_LITE_BSP@1.2.1
-
     - name: Download Build Artifact
       uses: dawidd6/action-download-artifact@v11
       with:

@@ -20,7 +20,7 @@ The examples can be explored using the [Keil MDK Community edition](https://www.
 > **NOTE**
 >
 > The CMSIS-Driver Ethernet accesses a variable in the Infineon DFP that is defined `static` in the current implementation. Therefore remove the `static` attribute in the file `%CMSIS_PACK_ROOT%/Infineon/T2G-B-H_DFP/1.2.1/Libraries/mtb-pdl-cat1/drivers/source/cy_ethif.c` as explained in [Patch/README.md](./Patch/README.md). For CI this patch is applied as part of the [Build_T2G_Release workflow](./.github/workflows/Build_T2G_Release.yaml).
- 
+
 ### App/T2G
 
 This is a practical demonstration of Arm FuSa RTS process isolation, using a simple traffic light controller to showcase safety classes, MPU zones, and fault handling on Cortex-M devices.

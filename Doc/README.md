@@ -67,7 +67,7 @@ Run the following command to build vcpkg itself:
 sudo .vcpkg/bootstrap-vcpkg.sh
 ```
 
-> [NOTE!]
+> [!NOTE]
 > If `node` is not installed on your machine, it will be downloaded automatically.
 
 Export the path to `vcpkg` to your `$PATH` environment variable:
@@ -118,7 +118,7 @@ cpackget add -a -F Infineon::T2G-B-H_DFP@1.2.1
 cpackget add -a -F Infineon::KIT_T2G-B-H_LITE_BSP@1.2.1
 ```
 
-> [NOTE!]
+> [!NOTE]
 > Run this command again if the pack versions change.
 
 ## Install the self-hosted runner

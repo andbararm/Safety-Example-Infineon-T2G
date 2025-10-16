@@ -530,6 +530,10 @@ static int32_t ReadFrame (uint8_t *frame, uint32_t len) {
     return ARM_DRIVER_ERROR;
   }
 
+#if ((CY_CPU_CORTEX_M7) && defined (ENABLE_CM7_DATA_CACHE)) || (CY_CPU_CORTEX_M55)
+  SCB_InvalidateDCache_by_Addr (Rx_Buf[emac.rx_tail].Buffer, (int32_t)len);
+#endif
+
   memcpy (frame, Rx_Buf[emac.rx_tail].Buffer, len);
 
   if (++emac.rx_tail >= EMAC_RX_BUF_CNT) {

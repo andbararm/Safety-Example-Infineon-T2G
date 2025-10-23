@@ -81,3 +81,6 @@ uv2csolution.log
 
 # Infineon Device_Configurator related files
 debug.log
+
+# vscode settings folder
+.vscode

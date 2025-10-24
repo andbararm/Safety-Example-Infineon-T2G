@@ -1,6 +1,0 @@
-{
-    "debug.hideSlowPreLaunchWarning": true,
-    "clangd.arguments": [
-        "--compile-commands-dir=d:\\Demo\\Safety-Example-Infineon-T2G\\App\\out\\Boot\\T2G-Kit\\Debug"
-    ]
-}

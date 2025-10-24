@@ -7,10 +7,10 @@ This repository contains examples for [Keil Studio](https://www.keil.arm.com/) t
 ## Quick Start
 
 1. Install [Keil Studio for VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack) from the VS Code marketplace.
-2. Clone this repository (for example using [Git in VS Code](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git)) and open the base folder of the cloned repository in VS Code.
+2. Clone this repository (for example using [Git in VS Code](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git)) or download the ZIP file. Then open the base folder in VS Code.
 3. Open the [CMSIS View](https://mdk-packs.github.io/vscode-cmsis-solution-docs/userinterface.html#2-main-area-of-the-cmsis-view) in VS Code and use the ... menu to choose an example via *Select Active Solution from workspace*.
 4. The related tools and software packs are downloaded and installed. Review progress with *View - Output - CMSIS Solution*.
-5. **Patch T2G-B-H_DFP** as explained in the [Patch/README.md](./Patch/README.md)
+5. **Patch T2G-B-H_DFP** as explained in the [Patch/README.md](./Patch/README.md).
 6. In the CMSIS view, use the [Action buttons](https://github.com/ARM-software/vscode-cmsis-csolution?tab=readme-ov-file#action-buttons) to build, load and debug the example on the hardware.
 
 ## Examples
@@ -77,7 +77,8 @@ This is a list of the relevant files and directories.
 
 File/Directory                            | Content
 :-----------------------------------------|:---------------------------------------------------------
-[vcpkg-configuration.json](./vcpkg-configuration.json) | Defines the tools that the [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) installs in VS Code.
+[vcpkg-configuration.json](./vcpkg-configuration.json) | List of tools installed (by [Arm Tools Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager)) in VS Code and the CI Build system.
+[vcpkg-run-configuration.json](./vcpkg-run-configuration.json) | List of tools installed for the [self-hosted GitHub runner](./Doc/README.md).
 [App](./App)                              | [App/T2G](#appt2g) contains the safety example.
 [Doc](./Doc)                              | Documentation files.
 [Patch](./Patch)                          | Patch for the T2G-B-H_DFP pack.

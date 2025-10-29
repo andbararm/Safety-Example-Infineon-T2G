@@ -45,7 +45,7 @@ jobs:
       working-directory: ./Test
       run: |
         csolution list packs CMSIS_DV.csolution.yml -m > packs.txt
-        cpackget add -f packs.txt --agree-embedded-license
+        cpackget add -f packs.txt --force-reinstall --agree-embedded-license
 
     - name: Cache downloaded packs
       uses: actions/cache@v4

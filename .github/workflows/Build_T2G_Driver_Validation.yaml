@@ -64,7 +64,7 @@ jobs:
     - name: Build for target-set T2G-Kit@Release with AC6 Compiler
       working-directory: ./Test
       run: |
-        cbuild CMSIS_DV.csolution.yml --active T2G-Kit@Release --packs --update-rte
+        cbuild CMSIS_DV.csolution.yml --active T2G-Kit@Release
 
     - name: Upload output for context T2G.Release+T2G-Kit
       uses: actions/upload-artifact@v4

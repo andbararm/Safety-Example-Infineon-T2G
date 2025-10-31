@@ -1,8 +1,13 @@
+[![License](https://img.shields.io/github/license/Arm-Examples/Safety-Example-Infineon-T2G?label)](https://github.com/Arm-Examples/Safety-Example-Infineon-T2G/blob/main/LICENSE)
 [![Build T2G Release](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_T2G_Release.yaml?logo=arm&logoColor=0091bd&label=Build%20T2G%20Release)](./.github/workflows/Build_T2G_Release.yaml)
+[![Run T2G Release](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Run_T2G_Release.yaml?logo=arm&logoColor=0091bd&label=Run%20T2G%20Release)](./.github/workflows/Run_T2G_Release.yaml)
+[![Build T2G Driver Validation](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_T2G_Driver_Validation.yaml?logo=arm&logoColor=0091bd&label=Build%20T2G%20Driver%20Validation)](./.github/workflows/Build_T2G_Driver_Validation.yaml)
+
 
 # Safety Example for Infineon TRAVEO T2G Series
 
 This repository contains examples for [Keil Studio](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
+
 
 ## Quick Start
 
@@ -13,6 +18,7 @@ This repository contains examples for [Keil Studio](https://www.keil.arm.com/) t
 5. **Patch T2G-B-H_DFP** as explained in the [Patch/README.md](./Patch/README.md).
 6. In the CMSIS view, use the [Action buttons](https://github.com/ARM-software/vscode-cmsis-csolution?tab=readme-ov-file#action-buttons) to build, load and debug the example on the hardware.
 
+
 ## Examples
 
 The examples can be explored using the [Keil MDK Community edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions) that is free-to-use for training and evaluation. For evaluation purposes, the open-source variant of [Keil RTX](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/RTX5%20RTOS) is used which offers the similar features as the commercial, safety-certified [FuSa RTS](https://developer.arm.com/Tools%20and%20Software/Keil%20MDK/FuSa%20Run-Time%20System). FuSa RTS is part of the [Keil MDK Professional edition](https://www.keil.arm.com/keil-mdk/#mdk-v6-editions).
@@ -20,6 +26,7 @@ The examples can be explored using the [Keil MDK Community edition](https://www.
 > **NOTE**
 >
 > The CMSIS-Driver Ethernet accesses a variable in the Infineon DFP that is defined `static` in the current implementation. Therefore remove the `static` attribute in the file `%CMSIS_PACK_ROOT%/Infineon/T2G-B-H_DFP/1.2.1/Libraries/mtb-pdl-cat1/drivers/source/cy_ethif.c` as explained in [Patch/README.md](./Patch/README.md). For CI this patch is applied as part of the [Build_T2G_Release workflow](./.github/workflows/Build_T2G_Release.yaml).
+
 
 ### App/T2G
 
@@ -43,11 +50,13 @@ It does not use:
 
 The usage of SMPU and PPU is explained in the application note from [Infineon AN219843 - Protection Configuration in TRAVEO T2G](https://www.infineon.com/gated/infineon-an219843---protection-configuration-in-traveo-tm-t2g-applicationnotes-en_32a66c38-76fc-478e-ba27-0fccba2b2976).
 
+
 ### Test/CMSIS_DV
 
 The Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) or [board software layers](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/#board-layer). These components are therefore developed separately and provided in this repository.
 
 The [Test/CMSIS_DV.csolution.yml](./Test/CMSIS_DV.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
+
 
 ## Git Workflow
 
@@ -55,6 +64,7 @@ This repository contains multiple *csolution projects* and is configured as a si
 
 - [vcpkg-configuration.json](./vcpkg-configuration.json) is in the workspace root directory and installs the tools for all *csolution projects*.
 - [.gitignore](./.gitignore) excludes files that contain user specific setup, for example `.vscode` and `*.cbuild*.yml`.
+
 
 ## Continuous Integration (CI) and Hardware-in-the Loop Test
 
@@ -66,10 +76,12 @@ The underlying build system of [Keil Studio](https://www.keil.arm.com/) uses the
 
 ![CI and HiL Test](./Doc/CI_HIL.png "CI and HiL Test")
 
-CI Workflow                              | Description
-:----------------------------------------|:----------------------------------------------------------
-[Build_T2G_Release.yaml](/.github/workflows/Build_T2G_Release.yaml) | Compile application using a GitHub action and save build output (artifacts).
-[Run_T2G_Release.yaml](/.github/workflows/Run_T2G_Release.yaml)     | Download to a Linux box and execute the application on [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
+| CI Workflow                              | Description
+|---                                       |---
+| [Build_T2G_Release](./.github/workflows/Build_T2G_Release.yaml) | Builds the application binary by using the Arm Compiler for Embedded (AC6) on a GitHub hosted runner and save them as artifact. |
+| [Run_T2G_Release](./.github/workflows/Run_T2G_Release.yaml)     | A self hosted runner on a Linux box downloads the artifact from GitHub. It loads and execute the application on the [Infineon Kit T2G-B-H_Lite board](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon). |
+| [Build_T2G_Driver_Validation](./.github/workflows/Build_T2G_Driver_Validation.yaml) | Builds the CMSIS Driver Validation binary (to validate the provided CMSIS compliant Ethernet driver) by using the Arm Compiler for Embedded (AC6) on a GitHub hosted runner and save them as artifact. |
+
 
 ## Files and Directories
 
@@ -85,11 +97,13 @@ File/Directory                            | Content
 [Test](./Test)                            | [Test/CMSIS_DV](#testcm7_0_dv_eth) contains the validation for the CMSIS-Driver Ethernet.
 [.github/workflows](./.github/workflows)  | Contains setup for the CI Build and HiL test workflows.
 
+
 ## Webinar
 
 This example was explained in the [Multicore and FuSa Development with TRAVEO™ T2G](https://www.arm.com/resources/webinar/keil-studio-session-5):
 
 [![Multicore webinar preview](./Doc/video_preview.png)](https://armkeil.blob.core.windows.net/developer/Files/videos/KeilStudio/20250930_FuSa_TRAVEO.mp4)
+
 
 ## Issues or Questions
 

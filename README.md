@@ -107,4 +107,4 @@ This example was explained in the [Multicore and FuSa Development with TRAVEO™
 
 ## Issues or Questions
 
-Use the [**Issues**](./issues) tab to raise questions or issues.
+Use the [**Issues**](https://github.com/Arm-Examples/Safety-Example-Infineon-T2G/issues) tab to raise questions or issues.

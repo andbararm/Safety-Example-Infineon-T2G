@@ -1,5 +1,5 @@
 project:
-  description: CMSIS Driver Validation for Ethernet driver running on Cortex-M7 core 0
+  description: CMSIS Driver Validation application for Ethernet driver running on Cortex-M7 core 0
 
   # List of packs used in the project.
   packs:

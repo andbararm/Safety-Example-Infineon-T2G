@@ -6,7 +6,7 @@
 
 # Safety Example for Infineon TRAVEO T2G Series
 
-This repository contains examples for [Keil Studio](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon).
+This repository contains examples for [Keil Studio](https://www.keil.arm.com/) that run on the [Infineon Kit T2G-B-H_Lite](https://www.keil.arm.com/packs/kit_t2g-b-h_lite_bsp-infineon). It contains an [application with FuSa RTS](#T2G) and shows how to [develop a CMSIS-Driver](#CMSIS_DV).
 
 
 ## Quick Start
@@ -28,9 +28,9 @@ The examples can be explored using the [Keil MDK Community edition](https://www.
 > The CMSIS-Driver Ethernet accesses a variable in the Infineon DFP that is defined `static` in the current implementation. Therefore remove the `static` attribute in the file `%CMSIS_PACK_ROOT%/Infineon/T2G-B-H_DFP/1.2.1/Libraries/mtb-pdl-cat1/drivers/source/cy_ethif.c` as explained in [Patch/README.md](./Patch/README.md). For CI this patch is applied as part of the [Build_T2G_Release workflow](./.github/workflows/Build_T2G_Release.yaml).
 
 
-### App/T2G
+### T2G
 
-This is a practical demonstration of Arm FuSa RTS process isolation, using a simple traffic light controller to showcase safety classes, MPU zones, and fault handling on Cortex-M devices.
+The folder `App` contains the `T2G.csolution.yml` which is a practical demonstration of Arm FuSa RTS process isolation, using a simple traffic light controller to showcase safety classes, MPU zones, and fault handling on Cortex-M devices.
 
 The [App/T2G.csolution.yml](./App/T2G.csolution.yml) safety example uses three processor cores and contains:
 
@@ -51,9 +51,11 @@ It does not use:
 The usage of SMPU and PPU is explained in the application note from [Infineon AN219843 - Protection Configuration in TRAVEO T2G](https://www.infineon.com/gated/infineon-an219843---protection-configuration-in-traveo-tm-t2g-applicationnotes-en_32a66c38-76fc-478e-ba27-0fccba2b2976).
 
 
-### Test/CMSIS_DV
+### CMSIS_DV
 
-The Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) or [board software layers](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/#board-layer). These components are therefore developed separately and provided in this repository.
+The folder `Test` contains the `CMSIS_DV.csolution.yml` which implements and tests an Ethernet CMSIS-Driver for the Infineon T2G device series.
+
+As the Infineon DFP/BSP software packs do not contain a [CMSIS-Driver Ethernet](https://arm-software.github.io/CMSIS_6/latest/Driver/group__eth__interface__gr.html) or [board software layers](https://open-cmsis-pack.github.io/cmsis-toolbox/ReferenceApplications/#board-layer). These components are therefore developed separately and provided in this repository.
 
 The [Test/CMSIS_DV.csolution.yml](./Test/CMSIS_DV.csolution.yml) validates the CMSIS-Driver Ethernet with the [CMSIS-Driver_Validation](https://github.com/ARM-software/CMSIS-Driver_Validation) pack.
 

@@ -30,8 +30,8 @@ jobs:
     - name: Download Build Artifact
       uses: dawidd6/action-download-artifact@v11
       with:
-        workflow: Build_T2G_Release.yaml
-        name: T2G-Kit@Release
+        workflow: Build_CMSIS_DV.yaml
+        name: CMSIS_Driver_Validation@Release
         path: ./artifact
 
     - name: Flash-Download-Test for T2G-Kit@Release

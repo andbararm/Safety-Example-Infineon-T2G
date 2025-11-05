@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/Arm-Examples/Safety-Example-Infineon-T2G?label)](https://github.com/Arm-Examples/Safety-Example-Infineon-T2G/blob/main/LICENSE)
 [![Build T2G Release](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_T2G_Release.yaml?logo=arm&logoColor=0091bd&label=Build%20T2G%20Release)](./.github/workflows/Build_T2G_Release.yaml)
-[![Run T2G Release](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Run_T2G_Release.yaml?logo=arm&logoColor=0091bd&label=Run%20T2G%20Release)](./.github/workflows/Run_T2G_Release.yaml)
-[![Build T2G Driver Validation](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_T2G_Driver_Validation.yaml?logo=arm&logoColor=0091bd&label=Build%20T2G%20Driver%20Validation)](./.github/workflows/Build_T2G_Driver_Validation.yaml)
+[![Build CMSIS_DV](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Build_CMSIS_DV.yaml?logo=arm&logoColor=0091bd&label=Build%20CMSIS_DV)](./.github/workflows/Build_CMSIS_DV.yaml)
+[![Run CMSIS_DV](https://img.shields.io/github/actions/workflow/status/Arm-Examples/Safety-Example-Infineon-T2G/Run_CMSIS_DV.yaml?logo=arm&logoColor=0091bd&label=Run%20CMSIS_DV)](./.github/workflows/Run_CMSIS_DV.yaml)
 
 
 # Safety Example for Infineon TRAVEO T2G Series

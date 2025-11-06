@@ -34,7 +34,7 @@ jobs:
         name: CMSIS_Driver_Validation@Release
         path: ./artifact
 
-    - name: Flash-Download-Test for T2G-Kit@Release
+    - name: Execute the CMSIS_Driver_Validation@Release
       working-directory: ./artifact/out
       run: | 
          pyocd load --probe cmsisdap: --cbuild-run T2G+T2G-Kit.cbuild-run.yml

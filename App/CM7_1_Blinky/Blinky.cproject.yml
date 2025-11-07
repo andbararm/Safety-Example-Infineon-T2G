@@ -35,7 +35,7 @@ project:
 
   # List of layers.
   layers:
-    - layer: $SolutionDir()$/Board/KIT_T2G-B-H_LITE/Cortex-M7-1/Board.clayer.yml
+    - layer: $SolutionDir()$/../Board/KIT_T2G-B-H_LITE/Cortex-M7-1/Board.clayer.yml
       type: Board
 
   # List of executable file formats to be generated.

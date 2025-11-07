@@ -53,7 +53,7 @@ extern void cy_ethif_privatedata;
 
 /* EMAC Memory Buffer configuration */
 #define EMAC_BUF_SIZE           (CY_ETH_SIZE_MAX_FRAME)
-#define EMAC_RX_BUF_CNT         ((CY_ETH_DEFINE_TOTAL_BD_PER_RXQUEUE * 3) / 2)
+#define EMAC_RX_BUF_CNT         (CY_ETH_DEFINE_TOTAL_BD_PER_RXQUEUE * 2)
 #define EMAC_TX_BUF_CNT         (CY_ETH_DEFINE_TOTAL_BD_PER_TXQUEUE)
 
 /* Driver Version */
@@ -106,8 +106,11 @@ static void eth0_rx_frame_cb (ETH_Type *base, uint8_t *rx_buffer, uint32_t lengt
   (void)rx_buffer;
 
   /* Increment head index of received frames */
-  if (++emac.rx_head >= EMAC_RX_BUF_CNT) {
-    emac.rx_head = 0U;
+  emac.rx_head = (emac.rx_head + 1) % EMAC_RX_BUF_CNT;
+
+  /* If no buffer available, drop the oldest from the queue */
+  if (emac.rx_head == emac.rx_tail) {
+    emac.rx_tail = (emac.rx_tail + 1) % EMAC_RX_BUF_CNT;
   }
 
   /* Notify the applicaton */
@@ -117,19 +120,12 @@ static void eth0_rx_frame_cb (ETH_Type *base, uint8_t *rx_buffer, uint32_t lengt
 }
 
 static void eth0_rx_get_buff (ETH_Type *base, uint8_t **buffer, uint32_t *length) {
+  uint32_t index;
   (void)base;
 
-  /* Check if buffer available */
-  if (emac.rx_index == emac.rx_tail) {
-    return;
-  }
-
-  *buffer = Rx_Buf[emac.rx_index].Buffer;
+  index = (emac.rx_head + CY_ETH_DEFINE_TOTAL_BD_PER_RXQUEUE) % EMAC_RX_BUF_CNT;
+  *buffer = Rx_Buf[index].Buffer;
   *length = sizeof(Rx_Buf[0]);
-
-  if (++emac.rx_index >= EMAC_RX_BUF_CNT) {
-    emac.rx_index = 0U;
-  }
 }
 
 static void eth0_tx_complete_cb (ETH_Type *base, uint8_t queue_index) {
@@ -311,7 +307,6 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
       emac.drv->abortTx (emac.pd);
       emac.drv->disableRx (emac.pd);
 
-      emac.rx_index = 4U;
       emac.rx_head  = 0U;
       emac.rx_tail  = 0U;
 
@@ -502,10 +497,8 @@ static int32_t SendFrame (const uint8_t *frame, uint32_t len, uint32_t flags) {
   /* Frame is now ready, add it to the TX queue */
   Cy_ETHIF_TransmitFrame (emac.base, Tx_Buf[emac.tx_index], emac.tx_len, CY_ETH_QS0_0, 1);
 
-  if (++emac.tx_index >= EMAC_TX_BUF_CNT) {
-    emac.tx_index = 0U;
-  }
-  emac.tx_len = 0U;
+  emac.tx_index = (emac.tx_index + 1) % EMAC_TX_BUF_CNT;
+  emac.tx_len   = 0U;
 
   return ARM_DRIVER_OK;
 }
@@ -536,9 +529,7 @@ static int32_t ReadFrame (uint8_t *frame, uint32_t len) {
 
   memcpy (frame, Rx_Buf[emac.rx_tail].Buffer, len);
 
-  if (++emac.rx_tail >= EMAC_RX_BUF_CNT) {
-    emac.rx_tail = 0U;
-  }
+  emac.rx_tail = (emac.rx_tail + 1) % EMAC_RX_BUF_CNT;
 
   return (int32_t)len;
 }

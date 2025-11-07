@@ -39,9 +39,8 @@
 typedef struct {
   ARM_ETH_MAC_SignalEvent_t cb_event;       // Event callback
   uint8_t                   flags;          // Control and state flags
-  uint8_t                   rx_index;       // Receive buffer index
-  uint8_t                   rx_head;        // Consumer head index
-  uint8_t                   rx_tail;        // Consumer tail index
+  uint8_t                   rx_head;        // Receive head index
+  uint8_t                   rx_tail;        // Receive tail index
   uint8_t                   tx_index;       // Transmit buffer index
   uint32_t                  tx_len;         // Length of assembled frame fragments
   ETH_Type                 *base;           // EMAC peripheral base address

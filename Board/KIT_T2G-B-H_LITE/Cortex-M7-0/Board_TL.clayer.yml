@@ -1,9 +1,9 @@
 layer:
   type: Board
-  description: KIT_T2G-B-H_LITE board setup (CM0+)
+  description: KIT_T2G-B-H_LITE board setup (CM7-0) for Traffic Light application
   for-board: Infineon::KIT_T2G-B-H_LITE
 
-  device: :Cortex-M0p
+  device: :Cortex-M7-0
 
   generators:
     options:
@@ -43,12 +43,26 @@ layer:
         - file: ../PHY_DP83825I.c
         - file: ../EMAC_T2G.c
         - file: ../vio_KIT_T2G-B-H_LITE.c
+    - group: Board Traffic Light
+      files:
+        - file: TrafficLight/io_defs.h
+        - file: TrafficLight/hw_watchdog.c
+        - file: TrafficLight/reset_reason.c
+        - file: TrafficLight/svc_user.c
+        - file: TrafficLight/zones.c
 
   add-path:
     - ./
     - ../
     - ../Device_Configurator/GeneratedSource
+    - ./TrafficLight
+
+  define:
+    - CORE_NAME_CM7_0
+    - CY_DISABLE_XMC7000_DATA_CACHE
+    - CMSIS_NVIC_VIRTUAL
 
   linker:
-    - script: RTE/Device/CYT4BF8CDS_Cortex-M0p/xmc7200d_x8384_cm0plus.sct
+    - script:  TrafficLight/ac6_linker_script.sct.src
+      regions: TrafficLight/mem_layout.h
       for-compiler: AC6
